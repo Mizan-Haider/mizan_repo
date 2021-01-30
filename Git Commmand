@@ -1,0 +1,40 @@
+-----------------------------------------GIT COMMANDS--------------------------------------------------------------
+GIT IS DEVELOPED BY THE SAME GUY WHO DEVELOPED LINUX KERNEL - Linus Torvalds
+GIT IS SCM(SOURCE CODE MANAGEMENT ) TOOL
+SCM PROVIDE VCS(VERSION CONTROL SYSTEM)
+THE BASIC COMMAND OF LINUX CAN RUN ON GIT SHELL
+
+- git --version >To check the version of git.
+- git init >To create git repository (Staging Area + Commit Area)
+- git add main.py > It will add this file to staging area or Tracking Area then from this area we put this file into commit area
+- git commit main.py > commit or Create snapshot of main.py file
+- git commit -m "Comment Line" main.py >Commit command  with comment in a line (Before commit we have to add comment )
+- git status >To check the status 
+- git log >To check the history of commited versions
+- git reflog >To check the history of commited versions
+- git config --global user.name "FIRST_NAME LAST_NAME" >Add user name to run commit,pull and push command of git.
+- git config --global user.email "a@gmail.com" > Add user mail to run commit,pull and push command of git.
+- git reset d456 main.py >(commit id upto four character which is also unique you also type full commit id)
+- git checkout --main.py >After reset we have to always checkout which means after resetting the file it is put in Staging ,
+                 and git keep track of Staging Area after that we have to put the file from staging area to commit area.
+- git log --oneline >To know all the log of commited ids only.
+- git branch > to check the number of branches
+- git checkout -b dev1 > Create a branch(Feature Branch or Upstream Branch) and go insite it or login inside it or use dev1 branch 
+- git branch -h >Help in branch
+- git branch --show-current >In which branch are you in currently.
+- git checkout master >Goto master branch.
+- git checkout dev1 >Goto upstream branch called dev1.
+- git merge dev1 >Merge dev1 to Master (Fast Forward Strategy used by default for merging)
+- git branch --set-upstream-to=dev1 >The master branch keeps track of the upstream branch dev1 of any changes made to the dev1 branch or not.
+- git pull > This is used for the merging only if master knows about upstream branch.
+- git remote -v >It will show the remote or cloud repository.
+- git remote add origin https://github.com/myname/my_remote_repo_name.git >Add remote or cloud repo in the local system.
+- git push origin master > Push or upload local master to origin is the name of this link or url ,origin is not a keyword it is just a name commonly used in the industry ,
+                           but many people thought it is a keyword but it is not.(https://github.com/myname/my_remote_repo_name.git )
+                          After every commit if we want to push the local master changes to remote master we have to use this command.
+- git fetch >Used for fetching only
+- git branch --set-upstream-to=origin/master master > When pulling or pushing we don't have to specify origin in the(git pull origin ,just use pull).
+- git show cbaa > Show changes upto commit id cbaa.
+- git diff fbta h7gt> Compare both the commit ids,data.
+- git pull origin master.
+- git clone https://github.com/...... > This command is to download data from public github.
