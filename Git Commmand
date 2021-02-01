@@ -1,5 +1,6 @@
 -----------------------------------------GIT COMMANDS--------------------------------------------------------------
 GIT IS DEVELOPED BY THE SAME GUY WHO DEVELOPED LINUX KERNEL - Linus Torvalds
+It is a product of Microsoft Corporation
 GIT IS SCM(SOURCE CODE MANAGEMENT ) TOOL
 SCM PROVIDE VCS(VERSION CONTROL SYSTEM)
 THE BASIC COMMAND OF LINUX CAN RUN ON GIT SHELL
@@ -29,7 +30,7 @@ THE BASIC COMMAND OF LINUX CAN RUN ON GIT SHELL
 - git pull > This is used for the merging only if master knows about upstream branch.
 - git remote -v >It will show the remote or cloud repository.
 - git remote add origin https://github.com/myname/my_remote_repo_name.git >Add remote or cloud repo in the local system.
-- git push origin master > Push or upload local master to origin is the name of this link or url ,origin is not a keyword it is just a name commonly used in the industry ,
+- git push origin master > Push or upload local master to origin is the name of this link or url        ,origin is not a keyword it is just a name commonly used in the industry ,
                            but many people thought it is a keyword but it is not.(https://github.com/myname/my_remote_repo_name.git )
                           After every commit if we want to push the local master changes to remote master we have to use this command.
 - git fetch >Used for fetching only
@@ -38,3 +39,14 @@ THE BASIC COMMAND OF LINUX CAN RUN ON GIT SHELL
 - git diff fbta h7gt> Compare both the commit ids,data.
 - git pull origin master.
 - git clone https://github.com/...... > This command is to download data from public github.
+- git checkout c.txt > Discard the changes which are not committed from staging area(Undo)
+- git switch master > switch to master branch
+- git merge --squash dev1 > It will merge all the versions of dev1 as a single version with master.
+- git cherry-pick de43 >Add a specific version with commit id de43 from the feature branch into          the master branch
+- git rebase master > Reverse merging or merge from master to feature branch
+- git slash save > Slash is a area where we save our those files which are in development phase and not ready to commit.The slash automatically detect the file which have some changes but not committed yet so it put that file in to its area.This may be used when  we apply  “ . ” which means all with commit command ,what it will do it will commit all the file that are in staging area but when we use slash it put that file in its area and no allow commit command to commit that file
+- git slash list > List all the files in the slash area.(SLASH IS JUST LIKE TEMPORARY MEMORY)
+- git slash apply > Remove all the files from slash area amd put it in staging area.
+-git slash apply slash@{0} > To remove a particular file from the stash with slash id 0 of that file.
+- git reset --mixed HEAD~2 > Remove the pointer location from head upto 2 location
+
