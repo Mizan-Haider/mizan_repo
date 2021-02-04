@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+void add_edge(vector<int> g[],int u,int v){
+    g[u].push_back(v);
+    g[v].push_back(u); //comment this line to make directed graph
+}
+void print(vector<int> g[],int n){
+    for(int i=0;i<n;i++){
+        cout<<i<<" is connected to : ";
+        for(auto x : g[i])
+            cout<<x<<" ";
+        cout<<endl;
+    }
+    
+}
+int main() {
+	int nodes;cin>>nodes;
+	vector<int> g[nodes];
+	int edges;cin>>edges;
+	for(int i=1;i<=edges;i++){
+	    int u,v; cin>>u>>v;
+	    add_edge(g,u,v);
+	}
+	
+	print(g,nodes);
+	
+	return 0;
+}
