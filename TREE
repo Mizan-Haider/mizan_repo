@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct node{
+    int key;
+    node *left;
+    node *right;
+    node(int k)
+    {
+        key=k;
+        left=right=NULL;
+    }
+};
+void inorder(node *root)
+{
+    if(root!=NULL)
+    {
+        inorder(root->left);
+        cout<<root->key<<" ";
+        inorder(root->right);
+    }
+}
+
+int getSize(node *root)
+{
+    if(root==NULL)
+    return 0;
+    else
+    {
+        return getSize(root->left)+getSize(root->right)+1;
+    }
+}
+int height(node *root){
+    if(root==NULL)
+    return 0;
+    else
+    return max(height(root->left),height(root->right))+1;
+}
+int maxi(node *root)
+{
+    if(root==NULL)
+     return INT_MIN;
+    else 
+    return max(root->key,max(maxi(root->left),maxi(root->right)));
+}
+int main() {
+	node *root=new node(10);
+	root->left=new node(20);
+	root->right=new node(30);
+	root->left->left=new node(40);
+	inorder(root);
+	cout<<endl<<"Size:"<<getSize(root);
+	cout<<endl<<"Height:"<<height(root);
+	cout<<endl<<"Maximum of Tree:"<<maxi(root);
+	return 0;
+}
