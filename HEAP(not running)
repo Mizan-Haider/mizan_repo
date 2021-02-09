@@ -1,0 +1,111 @@
+#include <bits/stdc++.h>
+using namespace std;
+class heap{
+    public:
+        int arr[];
+        int size; //upto-filled-index-in-array
+        int capacity;//whole-array-size
+         heap(int c)
+        {
+            int arr[c]=new int(c);
+            size=0;
+            capacity=c;
+        }
+int left(int i){return (2*i+1);}
+
+int right(int i){return (2*i+2);}
+
+int parent(int i){return ((i-2)/2);}
+
+void minHeapify(int i)
+{
+    int lt=left(i); int rt=right(i); int smallest=i;
+    if(lt<size && arr[lt]<arr[i])
+        smallest=lt;
+    if(rt<size && arr[rt]<arr[i])
+        smallest=rt;
+    if(smallest!=i)
+    {
+        swap(arr[i],arr[smallest]);
+        minHeapify(smallest);
+        
+    }
+    
+}
+
+void getMin()
+{
+    int min=arr[0];
+    cout<<min;
+}
+
+int extractMin() 
+{
+    if(size==0)
+    return INT_MAX;
+    if(size==1){
+    size--;
+    return arr[0];}
+    swap(arr[0],arr[size-1]);
+    size--;
+    minHeapify(0);
+    return arr[size];
+}
+
+void decreaseKey(int i,int x)//value-change-or-replacing
+{
+    
+    arr[i]=x;
+    while(i!=0 && arr[parent(i)]>arr[i]){
+        swap(arr[parent(i)],arr[i]);
+        i=parent(i);
+    }
+}
+
+void del(int i)
+{
+    decreaseKey(i,INT_MIN);
+    extractMin(arr[0]);
+}
+void bulidHeap()
+{
+    for(int i=(size-2)/2;i<=0;i--)
+    {
+        minHeapify(i);
+    }
+}
+
+/* priority_queue<int> pq; by default in c++ ,the pq is maxheap and implemeted by this.
+
+priority_queue<int,vector<int>,greater<int>>pq; or we can multi[ply the array with -1 ans print (-pq.top())].
+
+priority_queue<int>pq(arr,arr+n); applying on a predifed array.
+
+
+*/
+void insert(int a){
+    int n;
+    if(size==capacity)
+      return;
+    
+    size+=1;
+    arr[size-1]=a;
+    int p=size-1;
+    while(arr[parent(p)]>arr[p] && p!=0){
+            int t = arr[p];
+            arr[p] = n;
+            n = t;
+            p = parent(p);
+        }
+}
+}
+int main() {
+	heap h1=new heap(5);
+	h1.insert(3);
+	h2.insert(4);
+	h3.insert(7);
+	h4.insert(9);
+	h4.insert(2);
+    cout<<extractMin();
+		return 0;
+}
