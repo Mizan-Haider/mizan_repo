@@ -1,0 +1,44 @@
+//QUICKSORT-PALCE THE PIVOT ELELEMNT AT ITS RIGHT POSITION(DIVIDE AND CON)
+#include <iostream>
+using namespace std;
+
+int partition(int arr[],int l,int h)
+{
+    int pivot=arr[h];
+    int i=l-1;
+    int j;
+    for(j=l;j<=h-1;j++)
+    {
+        if(arr[j]<pivot)
+        {
+            i++;//i WILL KEEP TRACK OF LAST SMALLEST ELEMENT THAN PIVOT
+            swap(arr[i],arr[j]);//j will keeep track of element greater than pivot and in any case j become small then we swap
+        }
+    }
+    swap(arr[i+1],arr[h]);
+   return i+1; 
+}
+
+void quickSort(int arr[],int l,int h)
+{
+    if(l<h)
+    {
+        int q=partition(arr,l,h);
+        quickSort(arr,l,q-1);
+        quickSort(arr,q+1,h);
+    }
+}
+int main() {
+	int arr[]={8,6,5,10,9};
+	int num=sizeof(arr)/sizeof(arr[0]);
+	int l,h;
+	cin>>l;
+	cin>>h;
+	quickSort(arr,l,h);
+	
+	for(int i=0;i<num;i++)
+	{
+	    cout<<" "<<arr[i]<<" ";
+	}
+	return 0;
+}
