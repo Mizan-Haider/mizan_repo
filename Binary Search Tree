@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+struct node{
+	int data;
+	node *left;
+	node *right;
+	node(int k)
+	{
+		data=k;
+		left=right=NULL;
+	}
+};
+node *root;
+node* ins_tree(int data,node *root)
+{
+  if(root==NULL)
+  return root=new node(data);
+  else
+  {
+  	if(data<root->data)
+  	root->left=ins_tree(data,root->left);
+  	else
+  	root->right=ins_tree(data,root->right);
+  	
+  }
+  return root;
+}
+
+void inno(node *root)
+{
+    if(root!=NULL)
+    {
+        inno(root->left);
+        cout<<root->data<<" ";
+        inno(root->right);
+    }
+}
+void post(node *root)
+{
+    if(root!=NULL)
+    {
+        inno(root->left);
+        
+        inno(root->right);
+        
+        cout<<root->data<<" ";
+    }
+}
+void pre(node *root)
+{
+    if(root!=NULL)
+    {
+        cout<<root->data<<" ";
+        inno(root->left);
+        
+        inno(root->right);
+    }
+}
+
+int height(node *root){
+    if(root==NULL)
+    return 0;
+    else
+    {
+        return max(height(root->left),height(root->right))+1;
+        
+    }
+}
+
+int get_s(node *root){
+    if(root==NULL)
+    return 0;
+    else
+    {
+        return (get_s(root->left)+get_s(root->right)+1);
+        
+    }
+}
+int main() {
+int data;
+while(cin>>data)
+{
+	root=ins_tree(data,root);
+	//cout<<"inserted";
+}
+/*inno(root);
+cout<<endl;
+pre(root);
+cout<<endl;
+post(root);
+*/
+cout<<get_s(root);
+	return 0;
+}
