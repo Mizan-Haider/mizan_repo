@@ -1,0 +1,144 @@
+                    	        TASK 1
+
+
+
+
+                               
+                   AWS-CSA TRAINING
+MIZAN HAIDER
+
+Task Description - AWS 
+
+🔅 Create a key pair 
+🔅 Create a security group 
+🔅 Launch an instance using the above created key pair and security group.
+🔅 Create an EBS volume of 1 GB.
+🔅 The final step is to attach the above created EBS volume to the instance you created in the previous steps.
+
+
+        CREATING IAM USER STEP BY STEP
+
+
+    CLICK ON IAM ICON AND THEN ON USER 
+
+
+                   CLICK ON ADD USER
+
+                   GIVE ANY USER NAME
+
+TICK ON ACCESS TYPE AND CUSTOMIZE PASSWORD
+CLICK ON ATTACH EXISTING POLICIES AND SEARCH AND SELECT POWER ACCESS USER
+
+
+
+
+ENTER YOUR VALUE OR NAME(OPTIONAL)
+        CLICK ON CREATE USER
+
+CONGO USER CREATED JUST COPY ACCESS ID AND SECRET KEY SOMEWHERE FOR THE LOGIN/AUTHENTICATION 
+
+
+C:\Users\Dell>aws configure
+
+TYPE THIS COMMAND FOT THE AUTHENTICATION
+
+ENTER YOUR ACCESS KEY, SECRET KEY AND REGION
+
+                    CREATING KEY PAIR
+ 
+C:\Users\Dell>aws ec2 create-key-pair --key-name mizan
+TYPE THIS COMMAND FOR THE CREATION OF KEY
+
+THIS WILL HAPPEN 
+
+           NEW KEY CREATED PROOF
+
+           CREATING SECURITY GROUP
+NOW FOR SECURITY GROUP, WE NEED THESE THREE ATTRIBUTES READ SYNOPSIS OF THESE ATTRIBUTE
+
+
+
+                            SYNOPSIS
+
+
+       
+TYPE THIS COMMAND ACCORDINGLY
+(YOUR VPC WILL REMAIN SAME AS OTHERS SECURITY VPC )
+
+C:\Users\Dell>aws ec2 create-security-group --group-name securitymizan --description "securitymiz" --vpc-id vpc-ea22c281
+
+
+CONGO YOUR SECURITY IS CREATED BUT INNERBOUND IS SETUP NEXT PICTURE SHOWING
+
+
+
+                      
+
+
+
+
+          SETTING UP INBOUND AUTHORITY
+
+
+
+
+
+
+
+
+
+
+C:\Users\Dell>aws ec2 authorize-security-group-ingress --group-id sg-0fa347b1ddaca7c2e --group-name securitymizan --protocol tcp --port 22 --cidr 0.0.0.0/0
+
+
+            ONE INBOUND RULE CREATED
+
+
+CREATING EC2 INSTANCE WITH THE CREATED KEY AND SECURITY GROUP
+
+THESE ATTRIBUTES ARE NEEDED TO LAUNCH INSTANCE
+
+
+
+COMMAND TO EC2 INSTANCE
+
+
+
+INSTANCE CREATED AND RUNNING
+
+                
+ CREATING THE VOLUME
+
+
+
+
+
+PUTTING THE AZ AS AN ATTRIBUTE 
+
+C:\Users\Dell>aws ec2 create-volume --availability-zone ap-south-1b --size 1
+VOLUME CREATED
+
+NOW ATTACHING THE VOLUME TO THE INSTANCE
+
+PUTTING NECESSARY ATTRIBUTE
+ 
+C:\Users\Dell>aws ec2 attach-volume --volume-id vol-016c2259a7897b67c --instance-id i-04e820264e8c46b80 --device /dev/sdf
+
+
+VOLUME ATTACHED
+NOW DO REMOTE LOGIN
+
+
+USE THIS COMMAND TO LIST ALL THE STORAGE DEVICES ATTACHED OR PRESENT
+
+HERE WE CAN SEE OUR EXTERNAL DEVICE IS PRESENT NOW ITS TIME TO PARTITION, FORMAT AND MOUNT IT.
+
+1.PARTITION - fdisk /dev/xvdf
+Then type n, enter 4 times (PARTITION DONE)
+
+2.FORMAT AND MOUNT
+
+
+YOU ARE GOOD TO GO!
+
+THANK YOU
