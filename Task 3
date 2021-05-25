@@ -1,0 +1,98 @@
+	                       TASK 3
+
+
+
+
+                               
+                   AWS-CSA TRAINING
+MIZAN HAIDER
+
+Task Description - AWS 
+
+🔅 Create an AWS EC2 instance 
+🔅 Configure the instance with Apache Web Server.
+🔅 Download php application name "WordPress"".
+🔅 As wordpress stores data at the backend in MySQL
+🔅 Database server. Therefore, you need to set up a MySQL server using AWS RDS service using Free Tier.
+🔅 Provide the endpoint/connection string to the
+WordPress application to make it work. 
+
+
+
+AWS RDS
+Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud. It provides cost-efficient and resizable capacity while automating time-consuming administration tasks such as hardware provisioning, database setup, patching and backups. It frees you to focus on your applications so you can give them the fast performance, high availability, security and compatibility they need.
+Amazon RDS is available on several database instance types — optimized for memory, performance or I/O — and provides you with six familiar database engines to choose from, including Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle Database, and SQL Server. You can use the AWS Database Migration Service to easily migrate or replicate your existing databases to Amazon RDS
+WordPress
+WordPress is open-source software, which means anyone can study its code and write their apps (plugins) and templates (themes) for it.
+RDS MySQL:-
+MySQL is the world’s most popular open source relational database and Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud.
+Steps :
+Launch an EC2 instance For Deploying WordPress using AWS dashboard or using cli (make sure to to allow all traffic in sg)
+
+
+2. Connect to EC2 Instance using Putty and install necessary libraries.
+dnf install httpd -y
+dnf install wget vim -y
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+dnf module install php:remi-7.4
+dnf install php-mysqlnd -y
+3. Start the httpd server
+systemctl start httpd
+systemctl enable httpd
+
+
+4. Type the public IP in browser and check httpd server has started or not
+########you can even check using
+systemctl status httpd
+
+
+5. Download WordPress code from the Internet and Extract it into /var/www/html folder
+wget https://wordpress.org/latest.tar.gz
+tar -xvzf latest.tar.gz -C /var/www/html
+6. Install mysql using
+dnf install mysql -y
+7. Create RDS database For WordPress
+Open Amazon RDS and click on Create Database
+Select mysql as database type
+In the Templates section, choose the Free tier.
+DB instance identifier — default
+Master username — default
+Master password — Choose a password.
+Confirm password — Retype the password
+Availiability Zone — us-east-1
+Initial Database Name — mydb
+
+
+
+
+
+
+ 
+
+8. After Creation of database it will provide endpoint url and also makes sure to allow all traffic in sg
+
+
+9. Check connection to database using
+mysql -h endpoint url -u admin -p
+
+
+10. Connect to WordPress using
+public_ip/wordpress
+
+
+Provide Database Name,UserName,Password,Endpoint Url
+
+
+
+
+
+
+11. Finally connection of WordPress with mysql is established
+
+
+ 
+ 
+
+
+
